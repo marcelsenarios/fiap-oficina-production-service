@@ -1,0 +1,31 @@
+server:
+  port: ${SERVER_PORT:8083}
+
+spring:
+  application:
+    name: fiap-oficina-production-service
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/oficina_production_db}
+      auto-index-creation: true
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASS:guest}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+
+rabbitmq:
+  exchange:
+    production: production.events.exchange
+    os: os.events.exchange
+  queue:
+    production-os-events: production.os.events.queue

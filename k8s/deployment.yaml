@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fiap-oficina-production-service
+  namespace: default
+  labels:
+    app: fiap-oficina-production-service
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fiap-oficina-production-service
+  template:
+    metadata:
+      labels:
+        app: fiap-oficina-production-service
+    spec:
+      containers:
+        - name: production-service
+          image: marcelsenarios/fiap-oficina-production-service:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8083
+              name: http
+          envFrom:
+            - configMapRef:
+                name: production-service-config
+            - secretRef:
+                name: production-service-secrets
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "512Mi"
+            limits:
+              cpu: "500m"
+              memory: "1024Mi"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8083
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8083
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 2

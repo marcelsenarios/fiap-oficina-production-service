@@ -1,0 +1,90 @@
+# IDEs and Editors
+.idea/
+.vscode/
+*.iml
+*.iws
+*.project
+*.classpath
+.settings/
+.factorypath
+
+# Build and Output
+/target/
+**/target/
+out/
+/generated-sources/
+/generated-test-sources/
+bin/
+
+# Dependencies
+node_modules/
+.mvn/wrapper/maven-wrapper.jar
+
+# Logs and Temp
+*.log
+spring.log
+*.tmp
+*.temp
+*.swp
+*~
+*.bak
+*.orig
+*.rej
+.DS_Store
+Thumbs.db
+
+# Database and Docker
+postgres-data/
+pgdata/
+docker-compose.override.yml
+.docker/
+
+# Environment and Secrets
+.env
+.env.*
+!.env.example
+
+# Media and Recordings (Keep scripts versioned, but not raw video files)
+recordings/
+videos/
+*.mp4
+*.mov
+*.mkv
+*.webm
+
+# Testing Artifacts
+test-results/
+.last-run.json
+.playwright/
+playwright-report/
+blob-report/
+test-results/
+
+# Documentation and Exports
+# Keep the Markdown sources in docs/ versioned.
+# PDFs should generally be generated locally; only keep the final one if explicitly desired.
+docs/*.pdf
+!docs/FINAL_DELIVERY_DOCUMENT.pdf
+docs/*.docx
+docs/*.odt
+
+# Local vulnerability scan exports copied outside target/
+dependency-check-report.*
+owasp-dependency-check-report.*
+security-report.*
+
+# API tools
+*.http.local
+*.curl
+.thunder/
+.rest-client/
+
+# Internal Logs
+EVOLUTION_LOG.md
+/docs/FINAL_DELIVERY_CHECKLIST.md
+/docs/GUIA_DEMONSTRACAO.md
+/docs/IMPLEMENTATION_SUMMARY.md
+/docs/REPOSITORY_AND_PDF_GUIDE.md
+/docs/TECH_CHALLENGE_STEPS.md
+/docs/TRANSCRICAO_TECH_CHALLENGE.md
+/docs/VIDEO_DEMO_SCRIPT.md
